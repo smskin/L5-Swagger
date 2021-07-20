@@ -234,4 +234,9 @@ return [
     'constants' => [
         'L5_SWAGGER_CONST_HOST' => env('L5_SWAGGER_CONST_HOST', 'http://my-default-host.com'),
     ],
+
+    /**
+     * Generate hash operationId
+     */
+    'generate_operation_id' => env('L5_SWAGGER_GENERATE_OPERATION_ID', false),
 ];

@@ -4,6 +4,20 @@ namespace L5Swagger;
 
 use Illuminate\Support\Facades\File;
 use L5Swagger\Exceptions\L5SwaggerException;
+use OpenApi\Processors\AugmentParameters;
+use OpenApi\Processors\AugmentProperties;
+use OpenApi\Processors\AugmentSchemas;
+use OpenApi\Processors\BuildPaths;
+use OpenApi\Processors\CleanUnmerged;
+use OpenApi\Processors\DocBlockDescriptions;
+use OpenApi\Processors\ExpandInterfaces;
+use OpenApi\Processors\ExpandTraits;
+use OpenApi\Processors\InheritProperties;
+use OpenApi\Processors\MergeIntoComponents;
+use OpenApi\Processors\MergeIntoOpenApi;
+use OpenApi\Processors\MergeJsonContent;
+use OpenApi\Processors\MergeXmlContent;
+use OpenApi\Processors\OperationId;
 use Symfony\Component\Yaml\Dumper as YamlDumper;
 
 class Generator
@@ -116,7 +130,25 @@ class Generator
         if ($this->isOpenApi()) {
             $this->swagger = \OpenApi\scan(
                 $this->annotationsDir,
-                ['exclude' => $this->excludedDirs]
+                [
+                    'exclude' => $this->excludedDirs,
+                    'processors' => [
+                        new DocBlockDescriptions(),
+                        new MergeIntoOpenApi(),
+                        new MergeIntoComponents(),
+                        new ExpandInterfaces(),
+                        new ExpandTraits(),
+                        new AugmentSchemas(),
+                        new AugmentProperties(),
+                        new BuildPaths(),
+                        new InheritProperties(),
+                        new AugmentParameters(),
+                        new MergeJsonContent(),
+                        new MergeXmlContent(),
+                        new OperationId(config('l5-swagger.generate_operation_id', false)),
+                        new CleanUnmerged(),
+                    ]
+                ]
             );
         }
 
