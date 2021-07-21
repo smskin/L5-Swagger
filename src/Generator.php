@@ -145,7 +145,7 @@ class Generator
                         new AugmentParameters(),
                         new MergeJsonContent(),
                         new MergeXmlContent(),
-                        new OperationId(config('l5-swagger.generate_operation_id', false)),
+                        new OperationId(config('l5-swagger.generate_hash_operation_id', false)),
                         new CleanUnmerged(),
                     ]
                 ]

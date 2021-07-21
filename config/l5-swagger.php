@@ -238,5 +238,5 @@ return [
     /**
      * Generate hash operationId
      */
-    'generate_operation_id' => env('L5_SWAGGER_GENERATE_OPERATION_ID', false),
+    'generate_hash_operation_id' => env('L5_SWAGGER_GENERATE_HASH_OPERATION_ID', false),
 ];
