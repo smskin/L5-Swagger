@@ -8,6 +8,12 @@
 L5 Swagger - OpenApi or Swagger Specification for your Laravel project made easy.
 ==========
 
+#Description
+I found critical bug in the branch 6.0.7. The maintainer of the original package ignored me for 2 months. I was created a new composer package for use as a dependence.
+
+Original package name: `darkaonline/l5-swagger`
+New package name: `smskin/l5-swagger`
+
 ## Please visit [L5 Swagger Wiki](https://github.com/DarkaOnLine/L5-Swagger/wiki) for more information:
 - [Installation & Configuration](https://github.com/DarkaOnLine/L5-Swagger/wiki/Installation-&-Configuration)
 - [Change Log](https://github.com/DarkaOnLine/L5-Swagger/wiki/Change-Log)
